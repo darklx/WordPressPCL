@@ -72,8 +72,8 @@ namespace WordPressPCL.Utility
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("exception thrown: " + ex.Message);
-                }
+                    throw;//Debug.WriteLine("exception thrown: " + ex.Message);
+				}
             }
             return default(TClass);
         }
@@ -109,8 +109,8 @@ namespace WordPressPCL.Utility
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("exception thrown: " + ex.Message);
-                }
+                    throw;//Debug.WriteLine("exception thrown: " + ex.Message);
+				}
             }
             return (default(TClass), response);
         }
@@ -141,7 +141,7 @@ namespace WordPressPCL.Utility
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("exception thrown: " + ex.Message);
+                    throw;//Debug.WriteLine("exception thrown: " + ex.Message);
                 }
             }
             return response;
