@@ -18,9 +18,10 @@ namespace WordPressPCL.Client
     {
         #region Init
 
-        private string _defaultPath;
-        private const string _methodPath = "media";
-        private HttpHelper _httpHelper;
+        public string _defaultPath;
+        public const string _methodPath = "media";
+        public HttpHelper _httpHelper;
+        public HttpHelper HttpHelper{ get { return _httpHelper; }set { _httpHelper = value; }}
 
         /// <summary>
         /// Constructor

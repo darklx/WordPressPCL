@@ -34,7 +34,7 @@ namespace WordPressPCL.Utility
         {
             _WordpressURI = WordpressURI;
         }
-        internal async Task<TClass> GetRequest<TClass>(string route, bool embed, bool isAuthRequired = false)
+        public async Task<TClass> GetRequest<TClass>(string route, bool embed, bool isAuthRequired = false)
             where TClass : class
         {
             string embedParam = "";
@@ -78,7 +78,7 @@ namespace WordPressPCL.Utility
             return default(TClass);
         }
 
-        internal async Task<(TClass, HttpResponseMessage)> PostRequest<TClass>(string route, HttpContent postBody, bool isAuthRequired = true)
+        public async Task<(TClass, HttpResponseMessage)> PostRequest<TClass>(string route, HttpContent postBody, bool isAuthRequired = true)
             where TClass : class
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.ExpectationFailed);
@@ -100,7 +100,14 @@ namespace WordPressPCL.Utility
                         if (HttpResponsePreProcessing != null)
                             responseString = HttpResponsePreProcessing(responseString);
 
-                        return (JsonConvert.DeserializeObject<TClass>(responseString), response);
+                        try
+                        {
+							return (JsonConvert.DeserializeObject<TClass>(responseString), response);
+						}
+                        catch (Exception ex)
+                        {
+                            throw new Newtonsoft.Json.JsonException($"Error Deserialize JSON to type '{typeof(TClass).FullName}'\r\n{responseString}",ex);
+                        }
                     }
                     else
                     {
@@ -115,7 +122,7 @@ namespace WordPressPCL.Utility
             return (default(TClass), response);
         }
 
-        internal async Task<HttpResponseMessage> DeleteRequest(string route, bool isAuthRequired = true)
+        public async Task<HttpResponseMessage> DeleteRequest(string route, bool isAuthRequired = true)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.ExpectationFailed);
             using (var client = new HttpClient())
