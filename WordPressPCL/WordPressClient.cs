@@ -168,7 +168,7 @@ namespace WordPressPCL
         /// </summary>
         /// <param name="Username">username</param>
         /// <param name="Password">password</param>
-        public async Task RequestJWToken(string Username, string Password)
+        public async Task<JWTUser> RequestJWToken(string Username, string Password)
         {
             var route = $"{jwtPath}token";
             using (var client = new HttpClient())
@@ -182,6 +182,8 @@ namespace WordPressPCL
                 (JWTUser jwtUser, HttpResponseMessage response) = await _httpHelper.PostRequest<JWTUser>(route, formContent, false);
                 //JWToken = jwtUser?.Token;
                 _httpHelper.JWToken = jwtUser?.Token;
+
+                return jwtUser;
             }
         }
 

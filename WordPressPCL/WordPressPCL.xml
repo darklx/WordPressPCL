@@ -338,7 +338,7 @@
             Client class for interaction with Posts endpoint WP REST API
             </summary>
         </member>
-        <member name="M:WordPressPCL.Client.Posts.#ctor(WordPressPCL.Utility.HttpHelper@,System.String)">
+        <member name="M:WordPressPCL.Client.Posts.#ctor(WordPressPCL.Utility.HttpHelper@,System.String,System.String)">
             <summary>
             Constructor
             </summary>

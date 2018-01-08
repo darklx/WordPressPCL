@@ -60,7 +60,7 @@ namespace WordPressPCL.Client
         public async Task<TClass> Create(TClass Entity)
         {
             var postBody = new StringContent(JsonConvert.SerializeObject(Entity).ToString(), Encoding.UTF8, "application/json");
-            return (await _httpHelper.PostRequest<TClass>($"{_defaultPath}{_methodPath}", postBody)).Item1;
+                return (await _httpHelper.PostRequest<TClass>($"{_defaultPath}{_methodPath}", postBody)).Item1;
         }
 
         /// <summary>

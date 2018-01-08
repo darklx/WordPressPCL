@@ -207,10 +207,19 @@ namespace WordPressPCL.Models
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IEnumerable<object> Meta { get; set; }
 
-        /// <summary>
-        /// Links to related resources
-        /// </summary>
-        [JsonProperty("_links", DefaultValueHandling = DefaultValueHandling.Ignore)]
+
+		[JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Ignore)]
+		public Dictionary<string,object> Metadata { get; set; }
+
+
+		[JsonProperty("content_raw", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ContentRaw { get; set; }
+
+
+		/// <summary>
+		/// Links to related resources
+		/// </summary>
+		[JsonProperty("_links", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Links Links { get; set; }
 
         /// <summary>

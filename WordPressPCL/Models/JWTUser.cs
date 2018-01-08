@@ -3,7 +3,7 @@ using System;
 
 namespace WordPressPCL.Models
 {
-    class JWTUser
+    public class JWTUser
     {
         [JsonProperty("token")]
         public String Token { get; set; }

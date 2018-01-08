@@ -20,8 +20,8 @@ namespace WordPressPCL.Client
         /// </summary>
         /// <param name="HttpHelper">reference to HttpHelper class for interaction with HTTP</param>
         /// <param name="defaultPath">path to site, EX. http://demo.com/wp-json/ </param>
-        public Posts(ref HttpHelper HttpHelper, string defaultPath) : base(ref HttpHelper, defaultPath, _methodPath)
-        {
+        public Posts(ref HttpHelper HttpHelper, string defaultPath,string methodPath="posts") : base(ref HttpHelper, defaultPath, methodPath)
+        {   
         }
 
         #endregion Init
